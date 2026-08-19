@@ -1,0 +1,19 @@
+#!/usr/bin/env python
+# Build script for the lightgun GDExtension.
+# godot-cpp master is the 4.6 target: it ships extension_api-4-6.json and
+# selects the API version at build time (there is no 4.6 release branch).
+
+env = SConscript("godot-cpp/SConstruct", {"api_version": "4.6"})
+
+env.Append(CPPPATH=["src/"])
+sources = Glob("src/*.cpp")
+
+if env["platform"] == "windows":
+    env.Append(LIBS=["user32"])
+
+library = env.SharedLibrary(
+    "../addons/lightgun/bin/liblightgun{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
+    source=sources,
+)
+
+Default(library)

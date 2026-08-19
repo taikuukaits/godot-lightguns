@@ -1,17 +1,14 @@
-# Godot 4+ specific ignores
+# Godot
 .godot/
-.nomedia
-
-# Godot-specific ignores
-.import/
-export.cfg
-export_credentials.cfg
-*.tmp
-
-# Imported translations (automatically generated from CSV files)
 *.translation
 
-# Mono-specific ignores
-.mono/
-data_*/
-mono_crash.*.json
+# GDExtension build
+extension/godot-cpp/
+extension/.sconsign.dblite
+extension/src/*.obj
+addons/lightgun/bin/*.exp
+addons/lightgun/bin/*.lib
+addons/lightgun/bin/*.pdb
+
+# Godot's GDExtension hot-reload temp copies
+addons/lightgun/bin/~*
